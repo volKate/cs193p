@@ -1,14 +1,33 @@
 import SwiftUI
 
+enum Theme {
+  case sport, vechicles, food
+}
+
 struct ContentView: View {
-  let emojis = ["🕷️", "🎃", "👹", "🕸️", "👻", "😈", "💀", "🧙‍♀️", "🍭"]
+
+  let themes: [Theme: [String]] = [
+    .sport:     ["⚽️", "🏈", "🎾", "🏐", "🏓"],
+    .vechicles: ["🚗", "🚌", "🚛", "🚜", "🚑"],
+    .food:      ["🍍", "🥓", "🍕", "🍌", "🍔"]
+  ]
+  @State var selectedTheme: Theme = .sport {
+    didSet {
+      let emojisBytheme = themes[selectedTheme] ?? []
+      emojis = (emojisBytheme + emojisBytheme).shuffled()
+    }
+  }
+  @State var emojis = [String]()
 
   var body: some View {
     VStack {
+      Text("Memorize!")
+        .font(.largeTitle)
       ScrollView {
         cards
       }
       Spacer()
+      themeSelectors
     }
   }
 
@@ -22,11 +41,32 @@ struct ContentView: View {
     .padding()
     .foregroundColor(.orange)
   }
+
+  func themeSelector(for theme: Theme, label: String, symbol: String) -> some View {
+    Button {
+      selectedTheme = theme
+    } label: {
+      VStack {
+        Image(systemName: symbol)
+          .font(.title)
+        Text(label)
+          .font(.caption)
+      }
+    }
+  }
+
+  var themeSelectors: some View {
+    HStack(alignment: .lastTextBaseline, spacing: 30.0) {
+      themeSelector(for: .sport, label: "Sports", symbol: "soccerball")
+      themeSelector(for: .food, label: "Food", symbol: "carrot")
+      themeSelector(for: .vechicles, label: "Vechicles", symbol: "car")
+    }
+  }
 }
 
 struct CardView: View {
   let content: String
-  @State var isFaceUp = true
+  @State var isFaceUp = false
 
   var body: some View {
     ZStack {
