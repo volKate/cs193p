@@ -8,17 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		DA1D0AAC2A9FBE9D0020A239 /* MatchingGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D0AAB2A9FBE9D0020A239 /* MatchingGameApp.swift */; };
-		DA1D0AAE2A9FBE9D0020A239 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D0AAD2A9FBE9D0020A239 /* ContentView.swift */; };
+		DA1D0AAE2A9FBE9D0020A239 /* EmojiMatchingGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D0AAD2A9FBE9D0020A239 /* EmojiMatchingGameView.swift */; };
 		DA1D0AB02A9FBE9F0020A239 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA1D0AAF2A9FBE9F0020A239 /* Assets.xcassets */; };
 		DA1D0AB32A9FBE9F0020A239 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA1D0AB22A9FBE9F0020A239 /* Preview Assets.xcassets */; };
+		DA5BF8272AE06F3100DA81C9 /* EmojiMatchingGameTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5BF8262AE06F3100DA81C9 /* EmojiMatchingGameTheme.swift */; };
+		DACE6A712AB77B5200C6DD78 /* MatchingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACE6A702AB77B5200C6DD78 /* MatchingGame.swift */; };
+		DACE6A732AB77C8A00C6DD78 /* EmojiMatchingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACE6A722AB77C8A00C6DD78 /* EmojiMatchingGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DA1D0AA82A9FBE9D0020A239 /* MatchingGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchingGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1D0AAB2A9FBE9D0020A239 /* MatchingGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingGameApp.swift; sourceTree = "<group>"; };
-		DA1D0AAD2A9FBE9D0020A239 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DA1D0AAD2A9FBE9D0020A239 /* EmojiMatchingGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMatchingGameView.swift; sourceTree = "<group>"; };
 		DA1D0AAF2A9FBE9F0020A239 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA1D0AB22A9FBE9F0020A239 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DA5BF8262AE06F3100DA81C9 /* EmojiMatchingGameTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMatchingGameTheme.swift; sourceTree = "<group>"; };
+		DACE6A702AB77B5200C6DD78 /* MatchingGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingGame.swift; sourceTree = "<group>"; };
+		DACE6A722AB77C8A00C6DD78 /* EmojiMatchingGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMatchingGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +57,11 @@
 		DA1D0AAA2A9FBE9D0020A239 /* MatchingGame */ = {
 			isa = PBXGroup;
 			children = (
+				DACE6A722AB77C8A00C6DD78 /* EmojiMatchingGame.swift */,
+				DACE6A702AB77B5200C6DD78 /* MatchingGame.swift */,
+				DA5BF8262AE06F3100DA81C9 /* EmojiMatchingGameTheme.swift */,
 				DA1D0AAB2A9FBE9D0020A239 /* MatchingGameApp.swift */,
-				DA1D0AAD2A9FBE9D0020A239 /* ContentView.swift */,
+				DA1D0AAD2A9FBE9D0020A239 /* EmojiMatchingGameView.swift */,
 				DA1D0AAF2A9FBE9F0020A239 /* Assets.xcassets */,
 				DA1D0AB12A9FBE9F0020A239 /* Preview Content */,
 			);
@@ -95,7 +104,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					DA1D0AA72A9FBE9D0020A239 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -137,8 +146,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA1D0AAE2A9FBE9D0020A239 /* ContentView.swift in Sources */,
+				DA1D0AAE2A9FBE9D0020A239 /* EmojiMatchingGameView.swift in Sources */,
 				DA1D0AAC2A9FBE9D0020A239 /* MatchingGameApp.swift in Sources */,
+				DACE6A712AB77B5200C6DD78 /* MatchingGame.swift in Sources */,
+				DACE6A732AB77C8A00C6DD78 /* EmojiMatchingGame.swift in Sources */,
+				DA5BF8272AE06F3100DA81C9 /* EmojiMatchingGameTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +193,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -241,6 +254,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
