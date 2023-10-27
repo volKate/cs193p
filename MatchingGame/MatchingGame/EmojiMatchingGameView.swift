@@ -11,7 +11,12 @@ struct EmojiMatchingGameView: View {
     VStack {
       Text("Memorize!")
         .font(.largeTitle)
-      Text(game.themeName)
+      HStack {
+        Text(game.themeName.capitalized)
+        Spacer()
+        Text("Score: \(game.score)")
+      }
+      .padding()
       ScrollView {
         cards
           .animation(.default, value: game.cards)

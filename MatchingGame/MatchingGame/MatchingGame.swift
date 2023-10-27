@@ -3,6 +3,8 @@ import Foundation
 // View
 struct MatchingGame<CardContent> where CardContent: Equatable {
   private(set) var cards: [Card]
+  private(set) var score = 0
+  private var seenCards = [Card.ID]()
 
   init(numOfPairs: Int, cardContentFactory: (Int) -> CardContent) {
     var cards = [Card]()
@@ -13,7 +15,7 @@ struct MatchingGame<CardContent> where CardContent: Equatable {
     self.cards = cards.shuffled()
   }
 
-  var indexOfFirstAndOnly: Int? {
+  private var indexOfFirstAndOnly: Int? {
     get { cards.indices.filter { cards[$0].isFaceUp }.only }
     set { cards.indices.forEach { cards[$0].isFaceUp = false } }
   }
@@ -26,12 +28,29 @@ struct MatchingGame<CardContent> where CardContent: Equatable {
         if cards[potentialMatchIndex].content == card.content {
           cards[potentialMatchIndex].isMatched = true
           cards[chosenCardIndex].isMatched = true
+
+          scoreMatch()
+        } else {
+          scoreMismatch(for: cards[potentialMatchIndex])
+          scoreMismatch(for: cards[chosenCardIndex])
         }
       } else {
         indexOfFirstAndOnly = chosenCardIndex
       }
       cards[chosenCardIndex].isFaceUp = true
     }
+  }
+
+  private mutating func scoreMismatch(for card: Card) {
+    if seenCards.contains(card.id) {
+      score -= 1
+    } else {
+      seenCards.append(card.id)
+    }
+  }
+
+  private mutating func scoreMatch() {
+    score += 2
   }
 
   mutating func shuffle() {

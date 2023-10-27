@@ -40,6 +40,10 @@ class EmojiMatchingGame: ObservableObject {
     return EmojiMatchingGame.gameColors[theme.color] ?? .gray
   }
 
+  var score: Int {
+    return game.score
+  }
+
 
   // MARK: - Intentions
 
