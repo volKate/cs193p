@@ -14,6 +14,7 @@
 		DA5BF8272AE06F3100DA81C9 /* EmojiMatchingGameTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5BF8262AE06F3100DA81C9 /* EmojiMatchingGameTheme.swift */; };
 		DACE6A712AB77B5200C6DD78 /* MatchingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACE6A702AB77B5200C6DD78 /* MatchingGame.swift */; };
 		DACE6A732AB77C8A00C6DD78 /* EmojiMatchingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACE6A722AB77C8A00C6DD78 /* EmojiMatchingGame.swift */; };
+		DADB50D52AEBDBDB00E449A5 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB50D42AEBDBDB00E449A5 /* AspectVGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		DA5BF8262AE06F3100DA81C9 /* EmojiMatchingGameTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMatchingGameTheme.swift; sourceTree = "<group>"; };
 		DACE6A702AB77B5200C6DD78 /* MatchingGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingGame.swift; sourceTree = "<group>"; };
 		DACE6A722AB77C8A00C6DD78 /* EmojiMatchingGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMatchingGame.swift; sourceTree = "<group>"; };
+		DADB50D42AEBDBDB00E449A5 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		DA1D0AAA2A9FBE9D0020A239 /* MatchingGame */ = {
 			isa = PBXGroup;
 			children = (
+				DADB50D42AEBDBDB00E449A5 /* AspectVGrid.swift */,
 				DACE6A722AB77C8A00C6DD78 /* EmojiMatchingGame.swift */,
 				DACE6A702AB77B5200C6DD78 /* MatchingGame.swift */,
 				DA5BF8262AE06F3100DA81C9 /* EmojiMatchingGameTheme.swift */,
@@ -148,6 +151,7 @@
 			files = (
 				DA1D0AAE2A9FBE9D0020A239 /* EmojiMatchingGameView.swift in Sources */,
 				DA1D0AAC2A9FBE9D0020A239 /* MatchingGameApp.swift in Sources */,
+				DADB50D52AEBDBDB00E449A5 /* AspectVGrid.swift in Sources */,
 				DACE6A712AB77B5200C6DD78 /* MatchingGame.swift in Sources */,
 				DACE6A732AB77C8A00C6DD78 /* EmojiMatchingGame.swift in Sources */,
 				DA5BF8272AE06F3100DA81C9 /* EmojiMatchingGameTheme.swift in Sources */,
