@@ -14,6 +14,7 @@
 		DA2C6D592AEC20B7006504BF /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C6D582AEC20B7006504BF /* AspectVGrid.swift */; };
 		DA2C6D5B2AEC21CA006504BF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C6D5A2AEC21CA006504BF /* CardView.swift */; };
 		DA2C6D5D2AEC2572006504BF /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C6D5C2AEC2572006504BF /* SetGame.swift */; };
+		DA2C6D5F2AEC284C006504BF /* ShapesSetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C6D5E2AEC284C006504BF /* ShapesSetGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		DA2C6D582AEC20B7006504BF /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 		DA2C6D5A2AEC21CA006504BF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		DA2C6D5C2AEC2572006504BF /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
+		DA2C6D5E2AEC284C006504BF /* ShapesSetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesSetGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				DA2C6D502AEC1A22006504BF /* Preview Content */,
 				DA2C6D5A2AEC21CA006504BF /* CardView.swift */,
 				DA2C6D5C2AEC2572006504BF /* SetGame.swift */,
+				DA2C6D5E2AEC284C006504BF /* ShapesSetGame.swift */,
 			);
 			path = SetGame;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA2C6D4D2AEC1A20006504BF /* SetGameView.swift in Sources */,
+				DA2C6D5F2AEC284C006504BF /* ShapesSetGame.swift in Sources */,
 				DA2C6D4B2AEC1A20006504BF /* SetGameApp.swift in Sources */,
 				DA2C6D5D2AEC2572006504BF /* SetGame.swift in Sources */,
 				DA2C6D5B2AEC21CA006504BF /* CardView.swift in Sources */,

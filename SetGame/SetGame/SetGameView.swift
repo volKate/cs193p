@@ -1,14 +1,8 @@
 import SwiftUI
 
 struct SetGameView: View {
+  @ObservedObject var game: ShapesSetGame
   private let cardAspectRatio: CGFloat = 2/3
-  private var gameCards = [
-    SetGame.Card(id: "1"),
-    SetGame.Card(isSelected: true, id: "2"),
-    SetGame.Card(isMatched: true, id: "3"),
-    SetGame.Card(isMismatched: true, id: "4")
-  ]
-
 
   var body: some View {
     VStack {
@@ -21,7 +15,7 @@ struct SetGameView: View {
   }
 
   private var cards: some View {
-    AspectVGrid(items: gameCards, aspectRatio: cardAspectRatio) { card in
+    AspectVGrid(items: game.cards, aspectRatio: cardAspectRatio) { card in
       CardView(card)
         .padding(4)
     }
@@ -47,5 +41,5 @@ struct SetGameView: View {
 }
 
 #Preview {
-  SetGameView()
+  SetGameView(game: ShapesSetGame())
 }

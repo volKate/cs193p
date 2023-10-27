@@ -21,13 +21,3 @@ struct CardView: View {
     }
   }
 }
-
-#Preview {
-  HStack {
-    CardView(SetGame.Card(id: "1"))
-    CardView(SetGame.Card(isSelected: true, id: "2"))
-    CardView(SetGame.Card(isMatched: true, id: "3"))
-    CardView(SetGame.Card(isMismatched: true, id: "4"))
-  }
-  .padding()
-}
