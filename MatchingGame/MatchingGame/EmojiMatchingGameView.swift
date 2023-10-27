@@ -6,6 +6,7 @@ enum Theme {
 
 struct EmojiMatchingGameView: View {
   @ObservedObject var game: EmojiMatchingGame
+  private let cardAspectRatio: CGFloat = 2/3
 
   var body: some View {
     VStack {
@@ -16,32 +17,52 @@ struct EmojiMatchingGameView: View {
         Spacer()
         Text("Score: \(game.score)")
       }
-      .padding()
-      ScrollView {
-        cards
-          .animation(.default, value: game.cards)
-      }
+      cards
+        .animation(.default, value: game.cards)
+
       Spacer()
       Button("New Game") {
         // intention to start new game
         game.restart()
       }
     }
+    .padding()
   }
 
-  var cards: some View {
-    LazyVGrid(columns: [GridItem(.adaptive(minimum: 85), spacing: 0)], spacing: 0) {
-      ForEach(game.cards) { card in
-        CardView(card)
-          .aspectRatio(2/3, contentMode: .fit)
-          .padding(5)
-          .onTapGesture {
-            game.choose(card)
-          }
+  private var cards: some View {
+    GeometryReader { geometry in
+      let gridItemWidth = gridItemWidthThatFits(count: game.cards.count, size: geometry.size, atAspectRatio: cardAspectRatio)
+      LazyVGrid(columns: [GridItem(.adaptive(minimum: gridItemWidth), spacing: 0)], spacing: 0) {
+        ForEach(game.cards) { card in
+          CardView(card)
+            .aspectRatio(cardAspectRatio, contentMode: .fit)
+            .padding(5)
+            .onTapGesture {
+              game.choose(card)
+            }
+        }
       }
+      .foregroundColor(game.themeColor)
     }
-    .padding()
-    .foregroundColor(game.themeColor)
+  }
+
+  private func gridItemWidthThatFits(count: Int, size: CGSize, atAspectRatio aspectRatio: CGFloat) -> CGFloat {
+    var cols = 1.0
+    let count = CGFloat(count)
+
+    repeat {
+      let width = size.width / cols
+      let height = width / aspectRatio
+
+      let rows = (count / cols).rounded(.up)
+
+      if rows * height < size.height {
+        return width.rounded(.down)
+      }
+      cols += 1
+    } while cols < count
+
+    return min(size.width / count, size.height * aspectRatio).rounded(.down)
   }
 }
 
