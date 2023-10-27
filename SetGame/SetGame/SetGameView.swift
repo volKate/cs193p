@@ -29,6 +29,9 @@ struct SetGameView: View {
       Image(systemName: "arrow.counterclockwise.circle.fill")
         .imageScale(.large)
         .font(.title2)
+        .onTapGesture {
+          game.restart()
+        }
     }
   }
 

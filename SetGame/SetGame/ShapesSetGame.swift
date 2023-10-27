@@ -1,9 +1,16 @@
 import Foundation
 
 class ShapesSetGame: ObservableObject {
-  private var game = SetGame()
+  @Published private var game = SetGame()
 
   var cards: [SetGame.Card] {
     return game.cardsPlaying
   }
+
+  // MARK: - Intentions
+
+  func restart() {
+    game = SetGame()
+  }
+
 }
