@@ -4,13 +4,15 @@ struct SetGame {
   private(set) var deck: [Card]
   private(set) var cardsPlaying: [Card]
   private let setVector: Card.State = (0, 0, 0, 0)
+  private let cardsStartCount = 12
+  private let cardsInSetCount = 3
 
   init() {
     deck = SetGame.generateDeck()
     deck.shuffle()
 
-    cardsPlaying = Array(deck.prefix(12))
-    deck.removeFirst(12)
+    cardsPlaying = Array(deck.prefix(cardsStartCount))
+    deck.removeFirst(cardsStartCount)
   }
 
   private var selectedCards: [Card] {
@@ -18,7 +20,7 @@ struct SetGame {
   }
 
   private var setIsMismatched: Bool {
-    get { cardsPlaying.filter { $0.isMismatched }.count == 3 }
+    get { cardsPlaying.filter { $0.isMismatched }.count == cardsInSetCount }
   }
 
   mutating func select(_ card: Card) {
@@ -26,7 +28,7 @@ struct SetGame {
     if let selectedCardIndex {
 
       // allow deselect if < 3 cards currently selected
-      if selectedCards.count < 3 {
+      if selectedCards.count < cardsInSetCount {
         cardsPlaying[selectedCardIndex].isSelected.toggle()
       } else if !card.isMatched {
         cardsPlaying[selectedCardIndex].isSelected = true
@@ -45,7 +47,7 @@ struct SetGame {
       }
 
       // if selectedCards.count == 3, checkMatch and reset selectedCards then select new one
-      if selectedCards.count == 3 {
+      if selectedCards.count == cardsInSetCount {
         let setMatched = checkSet()
         if setMatched {
           cardsPlaying.indices.forEach { cardsPlaying[$0].isMatched = cardsPlaying[$0].isSelected }
@@ -59,20 +61,21 @@ struct SetGame {
   mutating func dealMoreCards() {
     let matchedCardsIndices = cardsPlaying.indices.filter { cardsPlaying[$0].isMatched }
     let matchedCardsIds = matchedCardsIndices.map { cardsPlaying[$0].id }
-    if matchedCardsIndices.count == 3 {
+
+    if matchedCardsIndices.count == cardsInSetCount {
       // replace matched cards with new cards from deck OR
       // if deck is empty, remove them from board
       if deck.isEmpty {
         cardsPlaying.removeAll { matchedCardsIds.contains($0.id) }
-      } else {
+      } else if deck.count >= matchedCardsIndices.count {
         matchedCardsIndices.forEach {
           cardsPlaying[$0] = deck.first!
           deck.removeFirst()
         }
       }
     } else if !deck.isEmpty {
-      cardsPlaying += Array(deck.prefix(3))
-      deck.removeFirst(3)
+      cardsPlaying += Array(deck.prefix(cardsInSetCount))
+      deck.removeFirst(cardsInSetCount)
     }
   }
 
