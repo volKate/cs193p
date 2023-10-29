@@ -29,19 +29,19 @@ struct SetGame {
       if selectedCards.count < 3 {
         cardsPlaying[selectedCardIndex].isSelected.toggle()
       } else if !card.isMatched {
+        cardsPlaying[selectedCardIndex].isSelected = true
+
         if setIsMismatched {
           // if set was mismatched:
           // deselect all cards, reset isMismatched for all cards
           cardsPlaying.indices.forEach {
             cardsPlaying[$0].isMismatched = false
-            cardsPlaying[$0].isSelected = false
+            cardsPlaying[$0].isSelected = $0 == selectedCardIndex
           }
         } else {
           // set was matching, replace matched cards with new
           dealMoreCards()
         }
-        // select that card
-        cardsPlaying[selectedCardIndex].isSelected = true
       }
 
       // if selectedCards.count == 3, checkMatch and reset selectedCards then select new one
@@ -58,11 +58,12 @@ struct SetGame {
 
   mutating func dealMoreCards() {
     let matchedCardsIndices = cardsPlaying.indices.filter { cardsPlaying[$0].isMatched }
+    let matchedCardsIds = matchedCardsIndices.map { cardsPlaying[$0].id }
     if matchedCardsIndices.count == 3 {
       // replace matched cards with new cards from deck OR
       // if deck is empty, remove them from board
       if deck.isEmpty {
-        matchedCardsIndices.forEach { cardsPlaying.remove(at: $0) }
+        cardsPlaying.removeAll { matchedCardsIds.contains($0.id) }
       } else {
         matchedCardsIndices.forEach {
           cardsPlaying[$0] = deck.first!
