@@ -3,7 +3,7 @@ import Foundation
 struct SetGame {
   private(set) var deck: [Card]
   private(set) var cardsPlaying: [Card]
-  private let setVector: Card.State = (0, 0, 0, 0)
+  private let setVector = (0, 0, 0, 0)
   private let cardsStartCount = 12
   private let cardsInSetCount = 3
 
@@ -80,12 +80,12 @@ struct SetGame {
   }
 
   private func checkSet() -> Bool {
-    let sumVector: Card.State = selectedCards.reduce(setVector) { sumVector, card in
+    let sumVector: (Int, Int, Int, Int) = selectedCards.reduce(setVector) { sumVector, card in
       return (
-        count: (sumVector.count + card.state.count) % 3,
-        color: (sumVector.color + card.state.color) % 3,
-        shape: (sumVector.shape + card.state.shape) % 3,
-        shading: (sumVector.shading + card.state.shading) % 3
+        count: (sumVector.0 + card.state.count.rawValue) % 3,
+        color: (sumVector.1 + card.state.color.rawValue) % 3,
+        shape: (sumVector.2 + card.state.shape.rawValue) % 3,
+        shading: (sumVector.3 + card.state.shading.rawValue) % 3
       )
     }
 
@@ -102,22 +102,24 @@ struct SetGame {
           for n in Card.FeatureValue.allCases {
 
             id += 1
-            let countFeatureValue = i.rawValue
-            let colorFeatureValue = (i.rawValue + j.rawValue) % 3
-            let shapeFeatureValue = (i.rawValue + j.rawValue + k.rawValue) % 3
-            let shadingfeatureValue = (i.rawValue + j.rawValue + k.rawValue + n.rawValue) % 3
+            let countFeatureValue = Card.FeatureValue(rawValue: i.rawValue)
+            let colorFeatureValue = Card.FeatureValue(rawValue: (i.rawValue + j.rawValue) % 3)
+            let shapeFeatureValue = Card.FeatureValue(rawValue: (i.rawValue + j.rawValue + k.rawValue) % 3)
+            let shadingfeatureValue = Card.FeatureValue(rawValue: (i.rawValue + j.rawValue + k.rawValue + n.rawValue) % 3)
 
-            deck.append(
-              Card(
-                state: (
-                  countFeatureValue,
-                  colorFeatureValue,
-                  shapeFeatureValue,
-                  shadingfeatureValue
-                ),
-                id: String(id)
+            if let countFeatureValue, let colorFeatureValue, let shadingfeatureValue, let shapeFeatureValue {
+              deck.append(
+                Card(
+                  state: (
+                    countFeatureValue,
+                    colorFeatureValue,
+                    shapeFeatureValue,
+                    shadingfeatureValue
+                  ),
+                  id: String(id)
+                )
               )
-            )
+            }
 
           }
         }
@@ -130,14 +132,14 @@ struct SetGame {
 
   struct Card: Identifiable {
     enum FeatureValue: Int, CaseIterable {
-      case one = 0, two, three
+      case first = 0, second, third
     }
 
     typealias State = (
-      count: FeatureValue.RawValue,
-      color: FeatureValue.RawValue,
-      shape: FeatureValue.RawValue,
-      shading: FeatureValue.RawValue
+      count: FeatureValue,
+      color: FeatureValue,
+      shape: FeatureValue,
+      shading: FeatureValue
     )
 
     var isSelected = false
