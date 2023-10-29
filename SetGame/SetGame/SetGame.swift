@@ -82,10 +82,10 @@ struct SetGame {
   private func checkSet() -> Bool {
     let sumVector: (Int, Int, Int, Int) = selectedCards.reduce(setVector) { sumVector, card in
       return (
-        count: (sumVector.0 + card.state.count.rawValue) % 3,
-        color: (sumVector.1 + card.state.color.rawValue) % 3,
-        shape: (sumVector.2 + card.state.shape.rawValue) % 3,
-        shading: (sumVector.3 + card.state.shading.rawValue) % 3
+        count: (sumVector.0 + card.state.f1.rawValue) % 3,
+        color: (sumVector.1 + card.state.f2.rawValue) % 3,
+        shape: (sumVector.2 + card.state.f3.rawValue) % 3,
+        shading: (sumVector.3 + card.state.f4.rawValue) % 3
       )
     }
 
@@ -102,19 +102,19 @@ struct SetGame {
           for n in Card.FeatureValue.allCases {
 
             id += 1
-            let countFeatureValue = Card.FeatureValue(rawValue: i.rawValue)
-            let colorFeatureValue = Card.FeatureValue(rawValue: (i.rawValue + j.rawValue) % 3)
-            let shapeFeatureValue = Card.FeatureValue(rawValue: (i.rawValue + j.rawValue + k.rawValue) % 3)
-            let shadingfeatureValue = Card.FeatureValue(rawValue: (i.rawValue + j.rawValue + k.rawValue + n.rawValue) % 3)
+            let f1FeatureValue = Card.FeatureValue(rawValue: i.rawValue)
+            let f2FeatureValue = Card.FeatureValue(rawValue: (i.rawValue + j.rawValue) % 3)
+            let f3FeatureValue = Card.FeatureValue(rawValue: (i.rawValue + j.rawValue + k.rawValue) % 3)
+            let f4featureValue = Card.FeatureValue(rawValue: (i.rawValue + j.rawValue + k.rawValue + n.rawValue) % 3)
 
-            if let countFeatureValue, let colorFeatureValue, let shadingfeatureValue, let shapeFeatureValue {
+            if let f1FeatureValue, let f2FeatureValue, let f3FeatureValue, let f4featureValue {
               deck.append(
                 Card(
                   state: (
-                    countFeatureValue,
-                    colorFeatureValue,
-                    shapeFeatureValue,
-                    shadingfeatureValue
+                    f1FeatureValue,
+                    f2FeatureValue,
+                    f3FeatureValue,
+                    f4featureValue
                   ),
                   id: String(id)
                 )
@@ -136,10 +136,10 @@ struct SetGame {
     }
 
     typealias State = (
-      count: FeatureValue,
-      color: FeatureValue,
-      shape: FeatureValue,
-      shading: FeatureValue
+      f1: FeatureValue,
+      f2: FeatureValue,
+      f3: FeatureValue,
+      f4: FeatureValue
     )
 
     var isSelected = false
