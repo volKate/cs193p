@@ -7,7 +7,19 @@ class ShapesSetGame: ObservableObject {
     return game.cardsPlaying
   }
 
+  var deckIsEmpty: Bool {
+    return game.deck.isEmpty
+  }
+
   // MARK: - Intentions
+
+  func select(_ card: SetGame.Card) {
+    game.select(card)
+  }
+
+  func dealMoreCards() {
+    game.dealMoreCards()
+  }
 
   func restart() {
     game = SetGame()

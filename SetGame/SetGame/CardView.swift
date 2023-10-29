@@ -13,11 +13,10 @@ struct CardView: View {
       base
         .strokeBorder(lineWidth: 2.0)
         .foregroundColor(card.isMatched ? .green : card.isMismatched ? .red : .gray)
-      if card.isSelected {
-        base
-          .fill(.gray)
-          .opacity(0.3)
-      }
+      base
+        .fill(card.isSelected ? .gray : .white)
+        .opacity(0.3)
+
     }
   }
 }

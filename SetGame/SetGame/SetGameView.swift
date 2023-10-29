@@ -18,6 +18,9 @@ struct SetGameView: View {
     AspectVGrid(items: game.cards, aspectRatio: cardAspectRatio) { card in
       CardView(card)
         .padding(4)
+        .onTapGesture {
+          game.select(card)
+        }
     }
   }
 
@@ -37,9 +40,9 @@ struct SetGameView: View {
 
   private var footer: some View {
     Button("Deal 3 More Cards") {
-      // intent to put 3 more cards on the table
+      game.dealMoreCards()
     }
-    .disabled(false) // if no cards left in deck disabled=true
+    .disabled(game.deckIsEmpty)
   }
 }
 

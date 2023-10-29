@@ -1,11 +1,95 @@
 import Foundation
 
 struct SetGame {
-  private var deck: [Card]
+  private(set) var deck: [Card]
   private(set) var cardsPlaying: [Card]
+  private let setVector: Card.State = (0, 0, 0, 0)
 
   init() {
-    deck = []
+    deck = SetGame.generateDeck()
+    deck.shuffle()
+
+    cardsPlaying = Array(deck.prefix(12))
+    deck.removeFirst(12)
+  }
+
+  private var selectedCards: [Card] {
+    get { cardsPlaying.filter { $0.isSelected } }
+  }
+
+  private var setIsMismatched: Bool {
+    get { cardsPlaying.filter { $0.isMismatched }.count == 3 }
+  }
+
+  mutating func select(_ card: Card) {
+    let selectedCardIndex = cardsPlaying.firstIndex { $0.id == card.id }
+    if let selectedCardIndex {
+
+      // allow deselect if < 3 cards currently selected
+      if selectedCards.count < 3 {
+        cardsPlaying[selectedCardIndex].isSelected.toggle()
+      } else if !card.isMatched {
+        if setIsMismatched {
+          // if set was mismatched:
+          // deselect all cards, reset isMismatched for all cards
+          cardsPlaying.indices.forEach {
+            cardsPlaying[$0].isMismatched = false
+            cardsPlaying[$0].isSelected = false
+          }
+        } else {
+          // set was matching, replace matched cards with new
+          dealMoreCards()
+        }
+        // select that card
+        cardsPlaying[selectedCardIndex].isSelected = true
+      }
+
+      // if selectedCards.count == 3, checkMatch and reset selectedCards then select new one
+      if selectedCards.count == 3 {
+        let setMatched = checkSet()
+        if setMatched {
+          cardsPlaying.indices.forEach { cardsPlaying[$0].isMatched = cardsPlaying[$0].isSelected }
+        } else {
+          cardsPlaying.indices.forEach { cardsPlaying[$0].isMismatched = cardsPlaying[$0].isSelected }
+        }
+      }
+    }
+  }
+
+  mutating func dealMoreCards() {
+    let matchedCardsIndices = cardsPlaying.indices.filter { cardsPlaying[$0].isMatched }
+    if matchedCardsIndices.count == 3 {
+      // replace matched cards with new cards from deck OR
+      // if deck is empty, remove them from board
+      if deck.isEmpty {
+        matchedCardsIndices.forEach { cardsPlaying.remove(at: $0) }
+      } else {
+        matchedCardsIndices.forEach {
+          cardsPlaying[$0] = deck.first!
+          deck.removeFirst()
+        }
+      }
+    } else if !deck.isEmpty {
+      cardsPlaying += Array(deck.prefix(3))
+      deck.removeFirst(3)
+    }
+  }
+
+  private func checkSet() -> Bool {
+    let sumVector: Card.State = selectedCards.reduce(setVector) { sumVector, card in
+      return (
+        count: (sumVector.count + card.state.count) % 3,
+        color: (sumVector.color + card.state.color) % 3,
+        shape: (sumVector.shape + card.state.shape) % 3,
+        shading: (sumVector.shading + card.state.shading) % 3
+      )
+    }
+
+    return sumVector == setVector
+  }
+
+  static private func generateDeck() -> [Card] {
+    var deck = [Card]()
     var id = 0
 
     for i in Card.FeatureValue.allCases {
@@ -36,10 +120,7 @@ struct SetGame {
       }
     }
 
-    deck.shuffle()
-
-    cardsPlaying = Array(deck.prefix(12))
-
+    return deck
   }
 
 
@@ -48,11 +129,18 @@ struct SetGame {
       case one = 0, two, three
     }
 
+    typealias State = (
+      count: FeatureValue.RawValue,
+      color: FeatureValue.RawValue,
+      shape: FeatureValue.RawValue,
+      shading: FeatureValue.RawValue
+    )
+
     var isSelected = false
     var isMatched = false
     var isMismatched = false
 
-    var state: (count: FeatureValue.RawValue, color: FeatureValue.RawValue, shape: FeatureValue.RawValue, shading: FeatureValue.RawValue)
+    var state: State
 
     var id: String
   }
