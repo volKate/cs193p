@@ -16,7 +16,8 @@ struct SetGameView: View {
 
   private var cards: some View {
     AspectVGrid(items: game.cards, aspectRatio: cardAspectRatio) { card in
-      CardView(card)
+      let features = game.getFeatures(for: card.state)
+      CardView(card, with: features)
         .padding(4)
         .onTapGesture {
           game.select(card)
