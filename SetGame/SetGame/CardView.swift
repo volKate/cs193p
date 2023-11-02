@@ -37,7 +37,7 @@ struct CardView: View {
       case .diamond:
         applyShading(to: Circle())
       case .squiggle:
-        applyShading(to: Rectangle())
+        applyShading(to: Diamond())
       case .capsule:
         applyShading(to: Capsule())
     }

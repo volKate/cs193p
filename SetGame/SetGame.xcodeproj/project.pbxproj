@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA0541752AF3FC8200A08F9B /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0541742AF3FC8200A08F9B /* Diamond.swift */; };
 		DA2C6D4B2AEC1A20006504BF /* SetGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C6D4A2AEC1A20006504BF /* SetGameApp.swift */; };
 		DA2C6D4D2AEC1A20006504BF /* SetGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C6D4C2AEC1A20006504BF /* SetGameView.swift */; };
 		DA2C6D4F2AEC1A22006504BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA2C6D4E2AEC1A22006504BF /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA0541742AF3FC8200A08F9B /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 		DA2C6D472AEC1A20006504BF /* SetGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SetGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA2C6D4A2AEC1A20006504BF /* SetGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameApp.swift; sourceTree = "<group>"; };
 		DA2C6D4C2AEC1A20006504BF /* SetGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				DA2C6D5A2AEC21CA006504BF /* CardView.swift */,
 				DA2C6D5C2AEC2572006504BF /* SetGame.swift */,
 				DA2C6D5E2AEC284C006504BF /* ShapesSetGame.swift */,
+				DA0541742AF3FC8200A08F9B /* Diamond.swift */,
 			);
 			path = SetGame;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 				DA2C6D4D2AEC1A20006504BF /* SetGameView.swift in Sources */,
 				DA2C6D5F2AEC284C006504BF /* ShapesSetGame.swift in Sources */,
 				DA2C6D4B2AEC1A20006504BF /* SetGameApp.swift in Sources */,
+				DA0541752AF3FC8200A08F9B /* Diamond.swift in Sources */,
 				DA2C6D5D2AEC2572006504BF /* SetGame.swift in Sources */,
 				DA2C6D5B2AEC21CA006504BF /* CardView.swift in Sources */,
 				DA2C6D592AEC20B7006504BF /* AspectVGrid.swift in Sources */,
