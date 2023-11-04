@@ -16,6 +16,9 @@ struct CardView: View {
       Group {
         base.fill(.white)
         base.strokeBorder(lineWidth: Constants.lineWidth)
+        Pie(endAngle: Angle(degrees: 270))
+          .opacity(0.3)
+          .padding(5)
         Text(card.content)
           .font(.system(size: Constants.Font.maxSize))
           .minimumScaleFactor(Constants.Font.scaleFactor)

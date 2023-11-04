@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DA0541772AF6B1CD00A08F9B /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0541762AF6B1CD00A08F9B /* CardView.swift */; };
+		DA0541792AF6B8AB00A08F9B /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0541782AF6B8AB00A08F9B /* Pie.swift */; };
 		DA1D0AAC2A9FBE9D0020A239 /* MatchingGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D0AAB2A9FBE9D0020A239 /* MatchingGameApp.swift */; };
 		DA1D0AAE2A9FBE9D0020A239 /* EmojiMatchingGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D0AAD2A9FBE9D0020A239 /* EmojiMatchingGameView.swift */; };
 		DA1D0AB02A9FBE9F0020A239 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA1D0AAF2A9FBE9F0020A239 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		DA0541762AF6B1CD00A08F9B /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		DA0541782AF6B8AB00A08F9B /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
 		DA1D0AA82A9FBE9D0020A239 /* MatchingGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchingGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1D0AAB2A9FBE9D0020A239 /* MatchingGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingGameApp.swift; sourceTree = "<group>"; };
 		DA1D0AAD2A9FBE9D0020A239 /* EmojiMatchingGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMatchingGameView.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				DA1D0AAF2A9FBE9F0020A239 /* Assets.xcassets */,
 				DA1D0AB12A9FBE9F0020A239 /* Preview Content */,
 				DA0541762AF6B1CD00A08F9B /* CardView.swift */,
+				DA0541782AF6B8AB00A08F9B /* Pie.swift */,
 			);
 			path = MatchingGame;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 			files = (
 				DA1D0AAE2A9FBE9D0020A239 /* EmojiMatchingGameView.swift in Sources */,
 				DA0541772AF6B1CD00A08F9B /* CardView.swift in Sources */,
+				DA0541792AF6B8AB00A08F9B /* Pie.swift in Sources */,
 				DA1D0AAC2A9FBE9D0020A239 /* MatchingGameApp.swift in Sources */,
 				DADB50D52AEBDBDB00E449A5 /* AspectVGrid.swift in Sources */,
 				DACE6A712AB77B5200C6DD78 /* MatchingGame.swift in Sources */,
