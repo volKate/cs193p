@@ -10,35 +10,30 @@ struct CardView: View {
   }
 
   var body: some View {
-    ZStack {
-      let base = RoundedRectangle(cornerRadius: Constants.cornerRadius)
-
-      Group {
-        base.fill(.white)
-        base.strokeBorder(lineWidth: Constants.lineWidth)
-        Pie(endAngle: Angle(degrees: 270))
-          .opacity(0.3)
-          .padding(5)
+    Pie(endAngle: Angle(degrees: 270))
+      .opacity(Constants.Pie.opacity)
+      .overlay {
         Text(card.content)
           .font(.system(size: Constants.Font.maxSize))
           .minimumScaleFactor(Constants.Font.scaleFactor)
           .aspectRatio(1, contentMode: .fit)
+          .padding(Constants.Pie.inset)
       }
-      .opacity(card.isFaceUp ? 1 : 0)
-
-      base.fill()
-        .opacity(card.isFaceUp ? 0 : 1)
-    }
-    .opacity(card.isFaceUp || !card.isMatched ? 1 : 0)
+      .padding(Constants.inset)
+      .cardify(isFaceUp: card.isFaceUp)
+      .opacity(card.isFaceUp || !card.isMatched ? 1 : 0)
   }
 
   private struct Constants {
-    static let cornerRadius = 10.0
-    static let lineWidth = 2.0
+    static let inset = 4.0
     struct Font {
       static let maxSize = 200.0
       static let minSize = 10.0
       static let scaleFactor = minSize / maxSize
+    }
+    struct Pie {
+      static let opacity = 0.4
+      static let inset = 4.0
     }
   }
 }
