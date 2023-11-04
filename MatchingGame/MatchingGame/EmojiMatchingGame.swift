@@ -3,6 +3,7 @@ import SwiftUI
 
 // ViewModel
 class EmojiMatchingGame: ObservableObject {
+  typealias Card = MatchingGame<String>.Card
   private static let notFoundEmoji = "⁉️"
 
   @Published private var theme: EmojiMatchingGameTheme
@@ -28,7 +29,7 @@ class EmojiMatchingGame: ObservableObject {
 
   // i use var cards = which is setting cards with smth calculated when initialized
   // but i needed computed property var cards: Type {}
-  var cards: [MatchingGame<String>.Card] {
+  var cards: [Card] {
     return game.cards
   }
 
@@ -47,7 +48,7 @@ class EmojiMatchingGame: ObservableObject {
 
   // MARK: - Intentions
 
-  func choose(_ card: MatchingGame<String>.Card) {
+  func choose(_ card: Card) {
     game.choose(card)
   }
 

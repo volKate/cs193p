@@ -7,7 +7,8 @@ enum Theme {
 struct EmojiMatchingGameView: View {
   @ObservedObject var game: EmojiMatchingGame
   private let cardAspectRatio: CGFloat = 2/3
-  
+  private let spacing: CGFloat = 4
+
   var body: some View {
     VStack {
       Text("Memorize!")
@@ -32,7 +33,7 @@ struct EmojiMatchingGameView: View {
   private var cards: some View {
     AspectVGrid(items: game.cards, aspectRatio: cardAspectRatio) { card in
       CardView(card)
-        .padding(5)
+        .padding(spacing)
         .onTapGesture {
           game.choose(card)
         }
