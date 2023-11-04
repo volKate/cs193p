@@ -18,7 +18,6 @@ struct AspectVGrid<Item: Identifiable, ItemView: View>: View {
         ForEach(items) { item in
           content(item)
             .aspectRatio(aspectRatio, contentMode: .fit)
-            .padding(5)
         }
       }
     }
