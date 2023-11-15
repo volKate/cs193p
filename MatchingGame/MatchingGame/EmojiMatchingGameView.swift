@@ -13,29 +13,41 @@ struct EmojiMatchingGameView: View {
     VStack {
       Text("Memorize!")
         .font(.largeTitle)
-      HStack {
-        Text(game.themeName.capitalized)
-        Spacer()
-        Text("Score: \(game.score)")
-      }
+      stats
       cards
-        .animation(.default, value: game.cards)
-      
       Spacer()
-      Button("New Game") {
-        // intention to start new game
-        game.restart()
-      }
+      restart
     }
     .padding()
   }
-  
+
+  private var stats: some View {
+    HStack {
+      Text(game.themeName.capitalized)
+        .animation(nil)
+      Spacer()
+      Text("Score: \(game.score)")
+        .animation(nil)
+    }
+  }
+
+  private var restart: some View {
+    Button("New Game") {
+      // intention to start new game
+      withAnimation {
+        game.restart()
+      }
+    }
+  }
+
   private var cards: some View {
     AspectVGrid(items: game.cards, aspectRatio: cardAspectRatio) { card in
       CardView(card)
         .padding(spacing)
         .onTapGesture {
-          game.choose(card)
+          withAnimation {
+            game.choose(card)
+          }
         }
     }
     .foregroundColor(game.themeColor)
